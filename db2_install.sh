@@ -4,7 +4,7 @@
 $USER=rhel
 $PASSWD=badpassword
 $DB=hr
-$db2_url="https://iwm.dhe.ibm.com/sdfdl/v2/regs2/db2pmopn/db2_v111/Xa.2/Xb.XXa1DxLQqbbXkRPVV-WYnwCauduRMDo9X3Jrss38h4Q/Xc.db2_v111/v11.1_linuxx64_server_t.tar.gz/Xd./Xf.LPr.D1vk/Xg.9592889/Xi.swg-dm-db2trial/XY.regsrvs/XZ.1MmAeJ6FG2uTxSIexUR5Rwiz-E0/v11.1_linuxx64_server_t.tar.gz"
+$db2_url="https://db2setupforazure.file.core.windows.net/db2software/DB2_Svr_11.5_Linux_x86-64.tar.gz"
 
 #pre-reqs
 yum update -y
@@ -21,9 +21,9 @@ mount /dev/md0 /db2/
 grep -q "\/dev\/md0" /etc/fstab && echo '/dev/md0 /db2 ext4 defaults,nofail,discard 0 0' | sudo tee -a /etc/fstab
 
 #download DB2 11.1 from IBM
-wget -nv $db2_url -O v11.1_linuxx64_server_t.tar.gz
+wget -nv $db2_url -O DB2_Svr_11.5_Linux_x86-64.tar.gz
 
-tar -zxvf v11.1_linuxx64_server_t.tar.gz -C /tmp/
+tar -zxvf DB2_Svr_11.5_Linux_x86-64.tar.gz -C /tmp/
 
 #install db2 - approx. 10 minutes
 /tmp/server_t/db2_install -b /db2/  -y -n -p SERVER
